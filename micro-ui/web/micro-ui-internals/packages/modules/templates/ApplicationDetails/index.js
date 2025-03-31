@@ -252,9 +252,6 @@ const ApplicationDetails = (props) => {
             history.push(`/${window?.contextPath}/employee/noc/response`, { data: data });
           }
           if (data?.Amendments?.length > 0 ){
-            //RAIN-6981 instead just show a toast here with appropriate message
-          //show toast here and return 
-            //history.push("/${window?.contextPath}/employee/ws/response-bill-amend", { status: true, state: data?.Amendments?.[0] })
             
             if(variables?.AmendmentUpdate?.workflow?.action.includes("SEND_BACK")){
               setShowToast({ key: "success", label: t("ES_MODIFYSWCONNECTION_SEND_BACK_UPDATE_SUCCESS")})
@@ -262,9 +259,6 @@ const ApplicationDetails = (props) => {
               setShowToast({ key: "success", label: t("ES_MODIFYSWCONNECTION_RE_SUBMIT_UPDATE_SUCCESS") })
             } else if (variables?.AmendmentUpdate?.workflow?.action.includes("APPROVE")){
               setShowToast({ key: "success", label: t("ES_MODIFYSWCONNECTION_APPROVE_UPDATE_SUCCESS") })
-            }
-            else if (variables?.AmendmentUpdate?.workflow?.action.includes("REJECT")){
-              setShowToast({ key: "success", label: t("ES_MODIFYWSCONNECTION_REJECT_UPDATE_SUCCESS") })
             }            
             return
           }
